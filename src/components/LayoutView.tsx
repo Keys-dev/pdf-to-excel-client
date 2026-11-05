@@ -191,8 +191,8 @@ export function LayoutView({ layout, fileName, selectedCells, setSelectedCells, 
 
   return (
     <div className="space-y-6">
-      {/* ── Selection toolbar ───────────────────────────────────── */}
-      <div className="rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-sm">
+      {/* ── Selection toolbar (sticky) ──────────────────────────── */}
+      <div className="sticky top-0 z-30 rounded-xl border border-slate-200 bg-white px-5 py-3 shadow-sm">
         <div className="flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-slate-700">Layout View</span>
