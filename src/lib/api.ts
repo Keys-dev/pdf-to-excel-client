@@ -65,7 +65,14 @@ export interface LayoutExportCell {
 }
 
 // Use VITE_API_URL if set (for production), otherwise fall back to /api (proxied locally)
-const API_BASE = import.meta.env.VITE_API_URL || "/api";
+// If VITE_API_URL is a full URL, append /api to match the server's route mount point
+let API_BASE: string;
+if (import.meta.env.VITE_API_URL) {
+  const base = import.meta.env.VITE_API_URL;
+  API_BASE = base.endsWith('/') ? base + 'api' : base + '/api';
+} else {
+  API_BASE = '/api';
+}
 
 export async function extractPdf(file: File): Promise<ExtractionResult> {
   const formData = new FormData();
